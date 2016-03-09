@@ -1,5 +1,5 @@
 web:
-  image: 'jenkins:latest'
+  image: 'eqrbank/jenkins:latest'
   restart: always
   ports:
     - '12080:8080'
