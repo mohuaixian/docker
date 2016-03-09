@@ -4,6 +4,9 @@ FROM jenkins
 RUN mkdir -p /usr/share/jenkins/ref/plugins
 RUN cd /usr/share/jenkins/ref/plugins/
 
+USER root
+RUN chown -R jenkins /usr/share/jenkins/ref/plugins
+
 RUN curl -O https://updates.jenkins-ci.org/download/plugins/ws-cleanup/latest/ws-cleanup.hpi
 RUN curl -O https://updates.jenkins-ci.org/download/plugins/swarm/latest/swarm.hpi
 RUN curl -O https://updates.jenkins-ci.org/download/plugins/scm-api/latest/scm-api.hpi
@@ -14,8 +17,6 @@ RUN curl -O https://updates.jenkins-ci.org/download/plugins/multiple-scms/latest
 RUN curl -O https://updates.jenkins-ci.org/download/plugins/github-api/latest/github-api.hpi
 RUN curl -O https://updates.jenkins-ci.org/download/plugins/github/latest/github.hpi
 
-USER root
-RUN chown -R jenkins /usr/share/jenkins/ref/plugins
 
 # Add Maven
 ENV MAVEN_VERSION=3.3.3 \
